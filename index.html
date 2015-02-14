@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Sunprinces-vim by sunprinceS</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Sunprinces-vim</h1>
+        <h2>my vim setting</h2>
+        <a href="https://github.com/sunprinceS/sunprinceS-vim" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="sunprinces-vim" class="anchor" href="#sunprinces-vim" aria-hidden="true"><span class="octicon octicon-link"></span></a>sunprinceS-vim</h1>
+
+<p>Author : TonyHsu</p>
+
+<p>Version: 1.3.1</p>
+
+<p>vim configuration:
+Use <a href="https://github.com/gmarik/Vundle.vim">Vundle</a></p>
+
+<p>To use this configuration:</p>
+
+<p>Dependencies:</p>
+
+<ol>
+<li>Vim 7.4+</li>
+<li>Ctags</li>
+<li>g++</li>
+<li>latexmk</li>
+<li>cscope</li>
+</ol>
+
+<h1>
+<a id="included-plugins" class="anchor" href="#included-plugins" aria-hidden="true"><span class="octicon octicon-link"></span></a>Included Plugins:</h1>
+
+<ul>
+<li><a href="https://github.com/scrooloose/nerdtree">NERDTree</a></li>
+<li><a href="https://github.com/bling/vim-airline">airline</a></li>
+<li><a href="https://github.com/airblade/vim-gitgutter">gitgutter</a></li>
+<li><a href="https://github.com/jlanzarotta/bufexplorer">BufExplorer</a></li>
+<li><a href="https://github.com/majutsushi/tagbar">tagbar</a></li>
+<li><a href="https://github.com/honza/vim-snippets">snippet</a></li>
+<li><a href="https://github.com/garbas/vim-snipmate">snipmate</a></li>
+<li><a href="https://github.com/scrooloose/nerdcommenter">nerdcommenter</a></li>
+<li><a href="https://github.com/vimwiki/vimwiki">vimwiki</a></li>
+<li><a href="https://github.com/LaTeX-Box-Team/LaTeX-Box">LatexBox</a></li>
+<li><a href="https://github.com/vim-scripts/cscope.vim">cscope</a></li>
+<li><a href="https://github.com/wesleyche/SrcExpl">SrcExpl</a></li>
+<li>OmnicppComplete</li>
+</ul>
+
+<h1>
+<a id="common-shortcut" class="anchor" href="#common-shortcut" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common Shortcut:</h1>
+
+<h2>
+<a id="general" class="anchor" href="#general" aria-hidden="true"><span class="octicon octicon-link"></span></a>General:</h2>
+
+<ul>
+<li>fast saving<code>&lt;Ctrl-s&gt;</code>
+</li>
+<li>line switching <code>&lt;Ctrl-Shift-↑&gt; &lt;Ctrl-Shift-↓&gt;</code> </li>
+<li>redo and undo <code>&lt;Ctrl-z&gt;</code> <code>&lt;Ctrl-r&gt;</code>
+</li>
+<li>upper-case 2 lower-case <code>&lt;Ctrl-u&gt;</code> <code>&lt;Ctrl-l&gt;</code>
+</li>
+<li>useful searching <code>\sw</code>
+</li>
+<li>folding 
+
+<ul>
+<li>open/close the folding <code>&lt;Space&gt;</code>
+</li>
+</ul>
+</li>
+<li>QuickFixToggle <code>\qf</code>
+</li>
+<li>ctags
+
+<ul>
+<li>generate tags <code>&lt;F4&gt;</code>
+</li>
+<li>go to definition <code>&lt;C-]&gt;</code>
+</li>
+<li>back to last page <code>&lt;C-t&gt;</code>
+</li>
+<li>if tags are more than one-&gt;<code>\s</code> to view whole selection</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="plugin" class="anchor" href="#plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugin:</h2>
+
+<ul>
+<li>NERDTree <code>&lt;F5&gt;</code>
+
+<ul>
+<li>open new horizontal split window <code>i</code>
+</li>
+<li>open new vertical split window <code>s</code>
+</li>
+<li>show hidden files in tree <code>I</code>
+</li>
+</ul>
+</li>
+<li>Tagbar <code>&lt;F8&gt;</code>
+</li>
+<li>Snipmate <code>&lt;Tab&gt;</code> </li>
+<li>SrcExpl 
+
+<ul>
+<li>switch to source explorer <code>\se</code> </li>
+<li>refresh the tags <code>&lt;F12&gt;</code>
+</li>
+</ul>
+</li>
+<li>Bufexplorer <code>\be</code> <code>\bs</code> <code>\bv</code>
+</li>
+<li>vimwiki Honepage <code>\ww</code>
+</li>
+<li>LatexBox
+
+<ul>
+<li>edit synchronously(with .pdf) and compile <code>\ll</code>
+</li>
+<li>edit synchronously(with .dvi) <a href="https://github.com/terminal" class="user-mention">@terminal</a> <code>latexmk &lt;fileName&gt;</code>
+</li>
+</ul>
+</li>
+<li>NerdCommenter
+
+<ul>
+<li>comment toggle <code>\c&lt;space&gt;</code>
+</li>
+<li>multi-line comment <code>\cm</code> or <code>\cn</code> </li>
+<li>append comment <code>\cA</code>
+</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="programming-language" class="anchor" href="#programming-language" aria-hidden="true"><span class="octicon octicon-link"></span></a>Programming Language:</h2>
+
+<ul>
+<li>SingleCompile <code>&lt;F9&gt;</code>
+</li>
+<li>SingleCompilenRun <code>&lt;F10&gt;</code>
+-&gt;optimize  </li>
+<li>view last output <code>\v</code>
+</li>
+</ul>
+
+<p>Todo:</p>
+
+<ul>
+<li>python development</li>
+<li>html development</li>
+<li>cscope -&gt; to make DEBUG more quiclkly</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/sunprinceS/sunprinceS-vim/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/sunprinceS/sunprinceS-vim/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/sunprinceS/sunprinceS-vim"></a> is maintained by <a href="https://github.com/sunprinceS">sunprinceS</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-59748795-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
