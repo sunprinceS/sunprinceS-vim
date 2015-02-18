@@ -26,6 +26,7 @@
 "	 ->snippets
 "	 ->LaTeX
 "	 ->MultipleCursor
+"	 ->Emmet
 "	 ->Compile
 "
 "  Related_functions:
@@ -106,6 +107,15 @@ Bundle 'terryma/vim-multiple-cursors'
 
 "Compile
 Bundle 'xuhdev/SingleCompile'
+
+""Web development
+"Emmet
+Bundle 'mattn/emmet-vim'
+"js syntax
+Bundle 'jelera/vim-javascript-syntax' 
+
+"html5
+Bundle 'othree/html5.vim'
 """""""""""""
 " ~General~ "
 """""""""""""
@@ -383,6 +393,12 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+"""""""""""
+" ~Emmet~ "
+"""""""""""
+"let g:user_emmet_leader_key='<C-a>'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 """""""""""""
 " ~Compile~ "
 """""""""""""

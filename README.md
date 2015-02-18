@@ -31,6 +31,8 @@ Included Plugins:
 * [LatexBox](https://github.com/LaTeX-Box-Team/LaTeX-Box)
 * [cscope](https://github.com/vim-scripts/cscope.vim)
 * [SrcExpl](https://github.com/wesleyche/SrcExpl)
+* [MultiCursor](https://github.com/terryma/vim-multiple-cursors)
+* [Emmet-vim](https://github.com/mattn/emmet-vim)
 * OmnicppComplete
 
 Common Shortcut:
@@ -71,6 +73,12 @@ Plugin:
 	+ comment toggle `\c<space>`
 	+ multi-line comment `\cm` or `\cn` 
 	+ append comment `\cA`
+* MultipleCursor
+    + FocusCurloc `<C-m>`
+    + PassCurLoc and findNext  `<C-x>`
+    + unFocusCurLoc `<C-p>`
+* Emmet
+    + leaderKey `<C-a>`
 
 Programming Language:
 -------
