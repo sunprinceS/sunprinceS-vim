@@ -166,7 +166,7 @@ set magic "For regular expression
 "Color setting
 colorscheme torte
 if has("gui_running") 	 
-	set guifont=monospace\ 16
+	set guifont=monaco\ 16
 	set t_Co=256
 end
 
