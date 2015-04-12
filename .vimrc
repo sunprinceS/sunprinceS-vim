@@ -19,7 +19,7 @@
 "
 "  Plugins:
 "    ->NERDTree
-"    ->Gitgutter
+"    ->Git-fugitive
 "	 ->Status line
 "	 ->Tagbar
 "	 ->Note
@@ -63,11 +63,14 @@ Bundle 'gmarik/vundle'
 "File browser
 Bundle 'scrooloose/nerdtree'
 
+"Recently file
+Bundle 'vim-scripts/mru.vim'
+
 "pretty status
 Bundle 'bling/vim-airline'
 
-"show changes with last commit
-Bundle 'airblade/vim-gitgutter'
+"Powerful git wrapper
+Bundle 'tpope/vim-fugitive'
 
 "class/modeule browser
 Bundle 'majutsushi/tagbar'
@@ -76,11 +79,11 @@ Bundle 'majutsushi/tagbar'
 Bundle 'Townk/vim-autoclose'
 
 "For automatically complete
-Bundle 'tpope/vim-fugitive'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'honza/vim-snippets'
 Bundle 'garbas/vim-snipmate'
+
 """for c++
 Bundle 'vim-scripts/OmniCppComplete'
 
@@ -102,8 +105,11 @@ Bundle 'vim-scripts/cscope.vim'
 "Code insight
 Bundle 'wesleyche/SrcExpl'
 
-"Nultiple cursor
+"Multiple cursor
 Bundle 'terryma/vim-multiple-cursors'
+
+"Python
+Bundle 'hdima/python-syntax'
 
 "Compile
 Bundle 'xuhdev/SingleCompile'
@@ -118,6 +124,7 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'othree/html5.vim'
 "Matlab
 Bundle 'lazywei/vim-matlab'
+
 """""""""""""
 " ~General~ "
 """""""""""""
@@ -144,10 +151,16 @@ nnoremap <leader>ev :e! $MYVIMRC<CR>
 " ~User Interface~ "
 """"""""""""""""""""
 
+if has("gui_running")
+  set guioptions-=m "remove menubar
+  set guioptions-=r "remove scrollbar
+endif
+
 set wildmenu      "Turn on wild menu
 set wildignore=*.o,*.obj,*~,*.pdf,*/.git/*,*/.hg/*,*/.svn/*,*.ttf,*.TTF,*.msf,*.jpg,*.xml,*.gz,*.png,
 			\*.mp4,*.cbp
 syntax on "syntax Highlighting
+let python_highlight_all = 1
 
 set showcmd   "let you know the incomplete command
 
@@ -157,12 +170,11 @@ set nu	"line number
 set showmatch  "show matching bracets
 set hlsearch "Highlight search things
 set mat=0 "How many tenths of a second to blink 
-
+set cino+=g0
 set ignorecase "Ignore case when searching
 set smartcase
 
 set magic "For regular expression 
-
 "Color setting
 colorscheme torte
 if has("gui_running") 	 
@@ -316,9 +328,9 @@ nnoremap <silent> <F5> :NERDTreeToggle<CR>
 """"""""""""""
 " ~Gitgutter~"
 """"""""""""""
-let g:gitgutter_enabled=1
+"let g:gitgutter_enabled=1
 highlight clear SignColumn
-let g:gitgutter_sign_modified='@'
+"let g:gitgutter_sign_modified='@'
 
 """""""""""""""""
 " ~Status Line~ "

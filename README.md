@@ -28,13 +28,14 @@ Included Plugins:
 * [snipmate](https://github.com/garbas/vim-snipmate)
 * [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
 * [vimwiki](https://github.com/vimwiki/vimwiki)
+* [vim-fugitive](https://github.com/tpope/vim-fugitive)
 * [LatexBox](https://github.com/LaTeX-Box-Team/LaTeX-Box)
 * [cscope](https://github.com/vim-scripts/cscope.vim)
 * [SrcExpl](https://github.com/wesleyche/SrcExpl)
 * [MultiCursor](https://github.com/terryma/vim-multiple-cursors)
 * [Emmet-vim](https://github.com/mattn/emmet-vim)
-* OmnicppComplete
-
+* [OmnicppComplete](https://github.com/vim-scripts/OmniCppComplete)
+* [mru](https://github.com/yegappan/mru)
 Common Shortcut:
 =======
 General:
