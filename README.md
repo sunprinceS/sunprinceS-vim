@@ -36,8 +36,10 @@ Included Plugins:
 * [Emmet-vim](https://github.com/mattn/emmet-vim)
 * [OmnicppComplete](https://github.com/vim-scripts/OmniCppComplete)
 * [mru](https://github.com/yegappan/mru)
+
 Common Shortcut:
 =======
+
 General:
 -----
 + fast saving`<Ctrl-s>`
