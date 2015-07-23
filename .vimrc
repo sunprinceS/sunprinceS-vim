@@ -1,33 +1,33 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   _____                           _                       "
-"  / ___/__  ______     ____  _____(_)___  ________         " 
-"  \__ \/ / / / __ \   / __ \/ ___/ / __ \/ ___/ _ \	    "
-" ___/ / /_/ / / / /  / /_/ / /  / / / / / /__/ ___/	    "
-"/____/\__,_/_/ /_/  / .___/_/  /_/_/ /_/\___/\___/ -Vim 1.3" 
-"                   /_/                              	    "
+"  / ___/__  ______     ____  _____(_)___  ________         "
+"  \__ \/ / / / __ \   / __ \/ ___/ / __ \/ ___/ _ \        "
+" ___/ / /_/ / / / /  / /_/ / /  / / / / / /__/ ___/        "
+"/____/\__,_/_/ /_/  / .___/_/  /_/_/ /_/\___/\___/ -Vim 1.3"
+"                   /_/                                     "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Author: TonyHsu 
+" Author: TonyHsu
 "
-" Version:1.3 
+" Version:1.3
 "
 " Sections:
-"    -> Vundle and Bundle install
-"    -> User Interface
-"    -> General
-"    -> File Processing
-"    -> Moving
+"	   -> Vundle and Bundle install
+"	-> User Interface
+"	   -> General
+"	-> File Processing
+"	-> Moving
 "
 "  Plugins:
-"    ->NERDTree
-"    ->Git-fugitive
-"	 ->Status line
-"	 ->Tagbar
-"	 ->Note
-"	 ->snippets
-"	 ->LaTeX
-"	 ->MultipleCursor
-"	 ->Emmet
-"	 ->Compile
+"	->NERDTree
+"	->Git-fugitive
+"	->Status line
+"	->Tagbar
+"	->Note
+"	->snippets
+"	->LaTeX
+"	->MultipleCursor
+"	->Emmet
+"	->Compile
 "
 "  Related_functions:
 "
@@ -37,13 +37,13 @@
 " ~Vundle~ "
 """"""""""""
 set nocompatible    " be iMproved, required
-filetype off  "required for Vundle  
+filetype off  "required for Vundle
 
 "Setting up Vundle
 let beHadVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
-   	echo "Installing Vundle..."
+   echo "Installing Vundle..."
    echo ""
    silent !mkdir -p~/.vim/bundle
    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
@@ -59,7 +59,6 @@ Bundle 'gmarik/vundle'
 
 "other Bundles:
 "if we want to install/update the bundles->type :BundleInstall
-
 "File browser
 Bundle 'scrooloose/nerdtree'
 
@@ -96,9 +95,6 @@ Bundle 'scrooloose/nerdcommenter'
 "Latex development
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 
-"Vimwiki Note
-Bundle 'vimwiki/vimwiki'
-
 "Cscope use
 Bundle 'vim-scripts/cscope.vim'
 
@@ -119,13 +115,16 @@ Bundle 'hdima/python-syntax'
 Bundle 'mattn/emmet-vim'
 
 "js syntax
-Bundle 'jelera/vim-javascript-syntax' 
+Bundle 'jelera/vim-javascript-syntax'
 
 "html5
 Bundle 'othree/html5.vim'
 
 "extend % to html tags
 Bundle 'vim-scripts/matchit.zip'
+
+"Alignment
+Bundle 'godlygeek/tabular'
 
 "Matlab
 Bundle 'lazywei/vim-matlab'
@@ -139,7 +138,7 @@ set shell=$SHELL
 
 "enable filetypee-specfic plugins
 filetype on
-filetype plugin indent on 
+filetype plugin indent on
 set autoread "autoread when files is changed from outside
 
 "Fast saving
@@ -180,9 +179,23 @@ set cino+=g0
 set ignorecase "Ignore case when searching
 set smartcase
 
+"tab align
+set list
+set lcs=tab:\|\ ,nbsp:%,trail:-
+highlight LeaderTab guifg=#666666
+match LeaderTab /^\t/
+
+"Powerful alignment
+noremap <leader>t dd
+vnoremap <leader>t :Tabularize /
+noremap <leader>tr :Tabularize /\zs<left><left><left>
+vnoremap <leader>tr :Tabularize /\zs<left><left><left>
+"inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+
 set magic "For regular expression 
 "Color setting
-colorscheme torte
+colorscheme sun
 if has("gui_running") 	 
 	set guifont=monaco\ 16
 	set t_Co=256
@@ -252,11 +265,17 @@ let g:SrcExpl_nextDefKey = "<F7>"
 
 "sth related to tab and indent
 set autoindent
+set noexpandtab
 set smarttab
-set tabstop=4		  
-set shiftwidth=4       	  
-set expandtab
+set tabstop=4
+set shiftwidth=4
+
 au Filetype cpp,c set cindent
+
+"Show the standard line
+nn <silent> <A-a> :call ReferenceLine('sub')<CR>
+nn <silent> <A-d> :call ReferenceLine('add')<CR>
+
 
 " Set backspace config
 set backspace=eol,start,indent "more useful <BS>
@@ -349,8 +368,10 @@ set laststatus=2
 let g:airline_detect_whitespace=0
 let g:airline#extensions#tabline#enabled=1
 let g:airline_theme="molokai"
-let g:airline_left_sep ="\u26a1"
-let g:airline_right_sep ="⌘"
+"let g:airline_left_sep ="\u26a1"
+"let g:airline_right_sep ="⌘"
+let g:airline_left_sep =" "
+let g:airline_right_sep =" " 
 
 """"""""""""
 " ~Tagbar~ "
@@ -360,26 +381,6 @@ let g:tagbar_autoclose=0
 let g:tagbar_autofocus=1
 nnoremap <silent> <F8> :TagbarToggle<CR>
 inoremap <silent> <F8> <Esc>:TagbarToggle<CR>
-
-""""""""""
-" ~Note~ "
-""""""""""
-hi VimwikiHeader1 guifg=#FFFF00
-hi VimwikiHeader2 guifg=#0000CD
-hi VimwikiHeader3 guifg=#FF00FF
-hi VimwikiHeader4 guifg=#00FF00
-hi VimwikiHeader5 guifg=#FF0000
-let g:vimwiki_use_mouse=1
-let g:vimwiki_camel_case=0 "not to use camel case as hyperlink
-let g:vimwiki_CJK_length=1 "consider Chinese character when calculating strlen
-let wiki_1={}
-let wiki_1.path="~/vimwiki"
-let wiki_1.html_path="~/vimwiki_html"
-"show highlighting when editing
-let wiki_1.nested_syntaxes={'python': 'py', 'c++': 'cpp','c': 'c','bash': 'sh','javascript': 'js'}
-let g:vimwiki_list=[wiki_1]  "Can add more wiki page to list
-nnoremap <F2> :Vimwiki2HTML<CR>
-nnoremap <S-F2> :VimwikiAll2HTML<CR>
 
 """""""""""""
 " ~snippet~ "
@@ -417,6 +418,10 @@ let g:multi_cursor_quit_key='<Esc>'
 "let g:user_emmet_leader_key='<C-a>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
+"""""""""""""""""""
+" ~JS Formatting~ "
+"""""""""""""""""""
 
 """""""""""""
 " ~Compile~ "
@@ -458,6 +463,29 @@ execute ':copen'
 
 execute ':cclose'
 endif
+endfunction
+
+fu! ReferenceLine(t)  "ref : http://zshou.is-programmer.com/posts/39381
+    let ccnum = &cc
+    if ccnum == '' | let ccnum = 0 | en
+    let csw = &sw
+    if a:t == 'add'
+        let ccnum = ccnum + csw
+        exec "setl cc=".ccnum
+    elsei a:t == 'sub'
+        let ccnum = ccnum - csw
+        if ccnum >= 0 | exec "setl cc=".ccnum | en
+    en
+endf
+function! s:align()
+    let p = '^\s*|\s.*\s|\s*$'
+    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+        Tabularize/|/l1
+        normal! 0
+        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+    endif
 endfunction
 """""""test  function"""""""""""""""""(from LeoMao's pika-vim)
 "function! s:VSetSearch(cmdtype)
