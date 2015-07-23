@@ -108,20 +108,25 @@ Bundle 'wesleyche/SrcExpl'
 "Multiple cursor
 Bundle 'terryma/vim-multiple-cursors'
 
-"Python
-Bundle 'hdima/python-syntax'
-
 "Compile
 Bundle 'xuhdev/SingleCompile'
+
+"Python syntax
+Bundle 'hdima/python-syntax'
 
 ""Web development
 "Emmet
 Bundle 'mattn/emmet-vim'
+
 "js syntax
 Bundle 'jelera/vim-javascript-syntax' 
 
 "html5
 Bundle 'othree/html5.vim'
+
+"extend % to html tags
+Bundle 'vim-scripts/matchit.zip'
+
 "Matlab
 Bundle 'lazywei/vim-matlab'
 
@@ -159,7 +164,7 @@ endif
 set wildmenu      "Turn on wild menu
 set wildignore=*.o,*.obj,*~,*.pdf,*/.git/*,*/.hg/*,*/.svn/*,*.ttf,*.TTF,*.msf,*.jpg,*.xml,*.gz,*.png,
 			\*.mp4,*.cbp
-syntax on "syntax Highlighting
+syntax on    "syntax Highlighting
 let python_highlight_all = 1
 
 set showcmd   "let you know the incomplete command
@@ -167,6 +172,7 @@ set showcmd   "let you know the incomplete command
 set ruler	"Always show current position
 set cursorline 	"highlight current line
 set nu	"line number
+set rnu "line number (relative number)
 set showmatch  "show matching bracets
 set hlsearch "Highlight search things
 set mat=0 "How many tenths of a second to blink 
@@ -309,6 +315,9 @@ inoremap <silent> <C-S-Down> <Esc>:m .+1<cr>==gi
 vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv 
 ">:last line selection end
 
+"Smart extend %
+runtime macros/matchit.vim " include matchit plugins in vim
+
 """"""""""""""
 " ~QuickFix~ "
 """"""""""""""
@@ -408,6 +417,7 @@ let g:multi_cursor_quit_key='<Esc>'
 "let g:user_emmet_leader_key='<C-a>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
 """""""""""""
 " ~Compile~ "
 """""""""""""
