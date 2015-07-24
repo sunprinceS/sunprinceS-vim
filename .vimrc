@@ -11,9 +11,9 @@
 " Version:1.3
 "
 " Sections:
-"	   -> Vundle and Bundle install
+"	-> Vundle and Bundle install
 "	-> User Interface
-"	   -> General
+"	-> General
 "	-> File Processing
 "	-> Moving
 "
@@ -22,7 +22,6 @@
 "	->Git-fugitive
 "	->Status line
 "	->Tagbar
-"	->Note
 "	->snippets
 "	->LaTeX
 "	->MultipleCursor
@@ -181,24 +180,28 @@ set smartcase
 
 "tab align
 set list
+"delete traling space
+noremap <A-n> :%s/\s*$//ge<CR>
 set lcs=tab:\|\ ,nbsp:%,trail:-
 highlight LeaderTab guifg=#666666
 match LeaderTab /^\t/
 
 "Powerful alignment
-noremap <leader>t dd
-vnoremap <leader>t :Tabularize /
-noremap <leader>tr :Tabularize /\zs<left><left><left>
+noremap  <leader>t  :Tabularize /
+vnoremap <leader>t  :Tabularize /
+noremap  <leader>tr :Tabularize /\zs<left><left><left>
 vnoremap <leader>tr :Tabularize /\zs<left><left><left>
 "inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 
 set magic "For regular expression 
 "Color setting
-colorscheme sun
 if has("gui_running") 	 
 	set guifont=monaco\ 16
 	set t_Co=256
+	colorscheme sun
+else
+	colorscheme ron
 end
 
 "encoding settings
@@ -220,27 +223,27 @@ map<F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " --- Omni complete functions --- 
 set completeopt=menuone,longest,preview
 set omnifunc=syntaxcomplete#Complete
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
+let OmniCpp_NamespaceSearch     = 1
+let OmniCpp_GlobalScopeSearch   = 1
+let OmniCpp_ShowAccess          = 1
 let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+let OmniCpp_MayCompleteDot      = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow    = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope    = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces   = ["std", "_GLIBCXX_STD"]
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 "SrcExpl setting
 nnoremap  <leader>se :SrcExplToggle<CR>
-let g:SrcExpl_winHeight = 8 
-let g:SrcExpl_refreshTime = 100 
-let g:SrcExpl_jumpKey = "<ENTER>" 
-let g:SrcExpl_gobackKey = "<SPACE>" 
-let g:SrcExpl_searchLocalDef = 1 
+let g:SrcExpl_winHeight      = 8
+let g:SrcExpl_refreshTime    = 100
+let g:SrcExpl_jumpKey        = "<ENTER>"
+let g:SrcExpl_gobackKey      = "<SPACE>"
+let g:SrcExpl_searchLocalDef = 1
 " // Do not let the Source Explorer update the tags file when opening 
-let g:SrcExpl_isUpdateTags = 0 
+let g:SrcExpl_isUpdateTags   = 0
 
 " // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to 
 " //  create/update a tags file 
@@ -257,8 +260,8 @@ let g:SrcExpl_pluginList = [
       \ ]
 let g:SrcExpl_isUpdateTags = 0
 "make srcexpl for multi-definition more convenient
-let g:SrcExpl_prevDefKey = "<F6>"
-let g:SrcExpl_nextDefKey = "<F7>"
+let g:SrcExpl_prevDefKey   = "<F6>"
+let g:SrcExpl_nextDefKey   = "<F7>"
 """""""""""""""""""""
 " ~File Processing~ "
 """""""""""""""""""""
@@ -347,9 +350,9 @@ noremap <silent> <leader>qf <Esc>:call QFSwitch()<CR>
 """"""""""""""
 " ~NERDTree~ "
 """"""""""""""
-let g:NERDTreeWinSize=20 
-let NERDTreeIgnore=['\~$','\.pdf$','\.swo','\.swp$','\.o$','\.obj$']
-let NERDTreeIgnore +=['\.cbp$','\.depend$','\.layout$','\.workspace$'] "add \ first,$ end
+let g:NERDTreeWinSize=  20
+let NERDTreeIgnore=     ['\~$','\.pdf$','\.swo','\.swp$','\.o$','\.obj$']
+let NERDTreeIgnore +=   ['\.cbp$','\.depend$','\.layout$','\.workspace$'] "add \ first,$ end
 "autocmd vimenter * NERDTree "laod NERDTree automatically at beginning
 nnoremap <silent> <F5> :NERDTreeToggle<CR>
 
@@ -365,28 +368,28 @@ highlight clear SignColumn
 """""""""""""""""
 "Airline
 set laststatus=2
-let g:airline_detect_whitespace=0
-let g:airline#extensions#tabline#enabled=1
-let g:airline_theme="molokai"
-"let g:airline_left_sep ="\u26a1"
-"let g:airline_right_sep ="⌘"
-let g:airline_left_sep =" "
-let g:airline_right_sep =" " 
+let g:airline_detect_whitespace          = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme                      = "molokai"
+"let g:airline_left_sep                  = "\u26a1"
+"let g:airline_right_sep                 = "⌘"
+let g:airline_left_sep                   = " "
+let g:airline_right_sep                  = " "
 
 """"""""""""
 " ~Tagbar~ "
 """"""""""""
-let g:tagbar_width=25
-let g:tagbar_autoclose=0
-let g:tagbar_autofocus=1
+let g:tagbar_width     = 25
+let g:tagbar_autoclose = 0
+let g:tagbar_autofocus = 1
 nnoremap <silent> <F8> :TagbarToggle<CR>
 inoremap <silent> <F8> <Esc>:TagbarToggle<CR>
 
 """""""""""""
 " ~snippet~ "
 """""""""""""
-let g:snips_author="sunprinceS (TonyHsu)"
-let g:snips_email="sunprince12014@gmail.com"
+let g:snips_author = "sunprinceS (TonyHsu)"
+let g:snips_email  = "sunprince12014@gmail.com"
 
 """""""""""
 " ~LaTeX~ "
@@ -395,11 +398,11 @@ let g:snips_email="sunprince12014@gmail.com"
 "Latex box
 set smartindent
 set omnifunc=syntaxcomplete#Complete "turn on omnifunc
-let g:tex_flavor = "latex" "Need to add this to use snippet!!!
-let g:LatexBox_quickfix=2
+let g:tex_flavor                            = "latex" "Need to add this to use snippet!!!
+let g:LatexBox_quickfix                     = 2
 "prevent some error when compile synchronously
-let g:LatexBox_latexmk_async=1
-let g:LatexBox_latexmk_preview_continuously=1
+let g:LatexBox_latexmk_async                = 1
+let g:LatexBox_latexmk_preview_continuously = 1
 "noremap <leader>lvi :!evince LaTeX_file/%:r.pdf "not easy to use OTL 
 
 """"""""""""""""""

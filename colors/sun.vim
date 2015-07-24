@@ -78,14 +78,14 @@ if has("gui_running")
 
   " -> Code
   hi Include        guibg=#1F1F1F guifg=#00AF00 gui=none
-  hi Number	        guibg=#1F1F1F guifg=#D7FF00 gui=bold
+  hi Number         guibg=#1F1F1F guifg=#D75F00 gui=none
   hi Comment        guibg=#1F1F1F guifg=#696567 gui=italic
-  hi Constant       guibg=#1F1F1F guifg=#D75F00 gui=none
-  hi Character      guibg=#1F1F1F guifg=#00FFFF gui=bold
-  hi String         guibg=#1F1F1F guifg=#00FFFF gui=none
+  hi Constant       guibg=#1F1F1F guifg=#D75F00 gui=bold
+  hi Character      guibg=#1F1F1F guifg=#D7FF00 gui=bold
+  hi String         guibg=#1F1F1F guifg=#D7FF00 gui=none
   hi Error          guibg=#1F1F1F guifg=#FC4234 gui=none
   hi Identifier     guibg=#1F1F1F guifg=#D78700 gui=none
-  hi Function       guibg=#1F1F1F guifg=#61D7FF gui=none
+  hi Function       guibg=#1F1F1F guifg=#5FD700 gui=none
   hi Ignore         guibg=#1F1F1F guifg=#1F1F1F gui=none
   hi MatchParen     guibg=#585858
   hi PreProc	    guibg=#1F1F1F guifg=#AF5FFF gui=none
@@ -93,11 +93,11 @@ if has("gui_running")
   hi Special        guibg=#1F1F1F guifg=#D75F00 gui=none
   hi Todo           guibg=#1F1F1F guifg=#FFFF00 gui=bold
   hi Underlined     guibg=#1F1F1F guifg=#FC4234 gui=underline
-  hi Statement      guibg=#1F1F1F guifg=#0E90FF gui=none
+  hi Statement      guibg=#1F1F1F guifg=#0E90FF gui=bold
   hi Operator       guibg=#1F1F1F guifg=#FF00FF gui=none
   hi Delimiter      guibg=#1F1F1F guifg=#FF00FF gui=none
   hi Type           guibg=#1F1F1F guifg=#FFDF5F gui=none
-  hi Exception      guibg=#1F1F1F guifg=#5FD700 gui=none
+  hi Exception      guibg=#1F1F1F guifg=#5FD700 gui=bold
   " -> HTML-specific
   hi htmlBold                 guibg=#1F1F1F guifg=#D0D0D0 gui=bold
   hi htmlBoldItalic           guibg=#1F1F1F guifg=#D0D0D0 gui=bold,italic
@@ -169,7 +169,7 @@ elseif &t_Co == 256
 
   " -> Code
   hi Include        ctermbg=none ctermfg=34  cterm=none
-  hi Number	      ctermbg=none ctermfg=129 cterm=none
+  hi Number         ctermbg=none ctermfg=129 cterm=none
   hi Comment        ctermbg=none ctermfg=241 cterm=none
   hi Constant       ctermbg=none ctermfg=166 cterm=none
   hi Character      ctermbg=none ctermfg=215 cterm=none
