@@ -3,12 +3,12 @@
 "  / ___/__  ______     ____  _____(_)___  ________         "
 "  \__ \/ / / / __ \   / __ \/ ___/ / __ \/ ___/ _ \        "
 " ___/ / /_/ / / / /  / /_/ / /  / / / / / /__/ ___/        "
-"/____/\__,_/_/ /_/  / .___/_/  /_/_/ /_/\___/\___/ -Vim 1.3"
+"/____/\__,_/_/ /_/  / .___/_/  /_/_/ /_/\___/\___/ -Vim 1.4"
 "                   /_/                                     "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Author: TonyHsu
 "
-" Version:1.3
+" Version:1.4
 "
 " Sections:
 "	-> Vundle and Bundle install
@@ -22,12 +22,12 @@
 "	->Git-fugitive
 "	->Status line
 "	->Tagbar
+"	->Undotree
 "	->snippets
 "	->LaTeX
 "	->MultipleCursor
 "	->Emmet
 "	->Compile
-"
 "  Related_functions:
 "
 "
@@ -90,6 +90,8 @@ Bundle 'jlanzarotta/bufexplorer'
 
 "convenient comment
 Bundle 'scrooloose/nerdcommenter'
+
+Bundle 'mbbill/undotree'
 
 "Latex development
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
@@ -167,12 +169,14 @@ let python_highlight_all = 1
 
 set showcmd   "let you know the incomplete command
 
+set mouse=a
 set ruler	"Always show current position
 set cursorline 	"highlight current line
 set nu	"line number
 set rnu "line number (relative number)
 set showmatch  "show matching bracets
 set hlsearch "Highlight search things
+set incsearch "make search like modern browser
 set mat=0 "How many tenths of a second to blink 
 set cino+=g0
 set ignorecase "Ignore case when searching
@@ -221,6 +225,7 @@ nnoremap <Space> za
 map<F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " --- Omni complete functions --- 
+
 set completeopt=menuone,longest,preview
 set omnifunc=syntaxcomplete#Complete
 let OmniCpp_NamespaceSearch     = 1
@@ -274,24 +279,30 @@ set tabstop=4
 set shiftwidth=4
 
 au Filetype cpp,c set cindent
+au Filetype cpp,c setl tags+=~/.vim/tags/cpptags
 
 "Show the standard line
 nn <silent> <A-a> :call ReferenceLine('sub')<CR>
 nn <silent> <A-d> :call ReferenceLine('add')<CR>
 
+"increase and decrease number under the cursor
+nnoremap + <C-a>
+nnoremap - <C-x>
 
 " Set backspace config
 set backspace=eol,start,indent "more useful <BS>
-
-"Persistent undo
-set undodir=~/.undodir
-set undofile
+set whichwrap+=<,>,[,]
 
 "redo and undo
 inoremap <silent> <C-z> <Esc>ui
 inoremap <silent> <C-r> <Esc><C-r>i
 nnoremap <silent> <C-z> u
 
+" Persistent undo
+if has("persistent_undo")
+  set undodir=$HOME/.vim/.undodir
+  set undofile
+endif
 "Case turning
 inoremap <silent> <C-u> <Esc>gUUi
 nnoremap <silent> <C-u> gUU
@@ -305,6 +316,8 @@ vnoremap <silent> <C-l> u
 noremap <leader>sw :%s/<C-R><C-W>//g<left><left>
 vnoremap <leader>sw <ESC>"syiwgv:s/<C-R>s//g<left><left>
 
+"Paste
+set pastetoggle=<F2>
 
 """"""""""""
 " ~Moving~ "
@@ -315,9 +328,6 @@ nnoremap <C-Left>  <C-W>h
 nnoremap <C-Right> <C-W>l
 nnoremap <C-Up>    <C-W>k
 
-"Cursor moving
-nnoremap <silent> <Left> :call MoveLeft()<CR>
-nnoremap <silent> <Right> :call MoveRight()<CR>
 
 "treat long lines as break lines
 nnoremap <Down> gj
@@ -355,7 +365,8 @@ let NERDTreeIgnore=     ['\~$','\.pdf$','\.swo','\.swp$','\.o$','\.obj$']
 let NERDTreeIgnore +=   ['\.cbp$','\.depend$','\.layout$','\.workspace$'] "add \ first,$ end
 "autocmd vimenter * NERDTree "laod NERDTree automatically at beginning
 nnoremap <silent> <F5> :NERDTreeToggle<CR>
-
+"set current path when vim start
+autocmd VimEnter * cd %:p:h
 """"""""""""""
 " ~Gitgutter~"
 """"""""""""""
@@ -384,6 +395,12 @@ let g:tagbar_autoclose = 0
 let g:tagbar_autofocus = 1
 nnoremap <silent> <F8> :TagbarToggle<CR>
 inoremap <silent> <F8> <Esc>:TagbarToggle<CR>
+
+
+""""""""""""""
+" ~Undotree~ "
+""""""""""""""
+noremap <silent><F3> <ESC>:UndotreeToggle<CR>
 
 """""""""""""
 " ~snippet~ "
@@ -434,27 +451,10 @@ noremap <F10> :SCCompileRun<CR>
 
 "View the result of the last run command.
 noremap <leader>v :SCViewResult<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""
 " ~Related Functions~ "
 """""""""""""""""""""""""""""""""
-function! MoveRight()
-	if col(".") == col("$")-1
-		normal j0
-	else
-		normal l
-	endif
-endfunction
-"""""""""""""""""""""""""""""""""
-function! MoveLeft()
-	if col(".") == 1
-		normal k$
-	else
-		normal h
-	endif
-endfunction
-"""""""""""""""""""""""""""""""""""
 function! QFSwitch()
 redir => ls_output
 execute ':silent! ls'
