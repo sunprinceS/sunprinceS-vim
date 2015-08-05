@@ -11,7 +11,7 @@
 " Version:1.4
 "
 " Sections:
-"	-> Vundle and Bundle install
+"	-> Package Management
 "	-> User Interface
 "	-> General
 "	-> File Processing
@@ -24,10 +24,10 @@
 "	->Tagbar
 "	->Undotree
 "	->snippets
-"	->LaTeX
 "	->MultipleCursor
 "	->Emmet
 "	->Compile
+
 "  Related_functions:
 "
 "
@@ -66,15 +66,13 @@ Bundle 'vim-scripts/mru.vim'
 
 "pretty status
 Bundle 'bling/vim-airline'
+Bundle 'junegunn/vim-emoji'
 
 "Powerful git wrapper
 Bundle 'tpope/vim-fugitive'
 
 "class/modeule browser
 Bundle 'majutsushi/tagbar'
-
-"bracet complete
-Bundle 'Townk/vim-autoclose'
 
 "For automatically complete
 Bundle 'tomtom/tlib_vim'
@@ -93,14 +91,8 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'mbbill/undotree'
 
-"Latex development
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
-
 "Cscope use
 Bundle 'vim-scripts/cscope.vim'
-
-"Code insight
-Bundle 'wesleyche/SrcExpl'
 
 "Multiple cursor
 Bundle 'terryma/vim-multiple-cursors'
@@ -121,14 +113,8 @@ Bundle 'jelera/vim-javascript-syntax'
 "html5
 Bundle 'othree/html5.vim'
 
-"extend % to html tags
-Bundle 'vim-scripts/matchit.zip'
-
 "Alignment
 Bundle 'godlygeek/tabular'
-
-"Matlab
-Bundle 'lazywei/vim-matlab'
 
 """""""""""""
 " ~General~ "
@@ -151,7 +137,12 @@ autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 
 "Fast editing .vimrc
 nnoremap <leader>ev :e! $MYVIMRC<CR>
+set magic "For regular expression
 
+"encoding settings
+set encoding=utf-8
+set termencoding=utf-8
+set fileencodings=utf-8,big5
 """"""""""""""""""""
 " ~User Interface~ "
 """"""""""""""""""""
@@ -167,9 +158,8 @@ set wildignore=*.o,*.obj,*~,*.pdf,*/.git/*,*/.hg/*,*/.svn/*,*.ttf,*.TTF,*.msf,*.
 syntax on    "syntax Highlighting
 let python_highlight_all = 1
 
-set showcmd   "let you know the incomplete command
-
-set mouse=a
+set showcmd 	"let you know the incomplete command
+set mouse=a 	"mouse function
 set ruler	"Always show current position
 set cursorline 	"highlight current line
 set nu	"line number
@@ -177,15 +167,16 @@ set rnu "line number (relative number)
 set showmatch  "show matching bracets
 set hlsearch "Highlight search things
 set incsearch "make search like modern browser
-set mat=0 "How many tenths of a second to blink 
+set mat=0 "How many tenths of a second to blink
 set cino+=g0
 set ignorecase "Ignore case when searching
 set smartcase
 
-"tab align
+"tab alignment
 set list
+
 "delete traling space
-noremap <A-n> :%s/\s*$//ge<CR>
+noremap <A-n> mmHmt:%s/\s\+$//ge<CR>'tzt'm:nohl<CR>
 set lcs=tab:\|\ ,nbsp:%,trail:-
 highlight LeaderTab guifg=#666666
 match LeaderTab /^\t/
@@ -195,28 +186,26 @@ noremap  <leader>t  :Tabularize /
 vnoremap <leader>t  :Tabularize /
 noremap  <leader>tr :Tabularize /\zs<left><left><left>
 vnoremap <leader>tr :Tabularize /\zs<left><left><left>
-"inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
+"Show the standard line
+nn <silent> <A-Left> :call ReferenceLine('sub')<CR>
+nn <silent> <A-Right> :call ReferenceLine('add')<CR>
 
-set magic "For regular expression 
 "Color setting
-if has("gui_running") 	 
+colorscheme sun
+set t_Co=256
+
+if has("gui_running")
 	set guifont=monaco\ 16
-	set t_Co=256
-	colorscheme sun
-else
-	colorscheme ron
 end
 
-"encoding settings
-set encoding=utf-8
-set termencoding=utf-8
-set fileencodings=utf-8,big5
 
 "Folding
 set foldmethod=syntax
 set foldnestmax=2
 nnoremap <Space> za
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
 """"""""""""""""""""
 " ~Cscope and Tag~ "
 """"""""""""""""""""
@@ -224,7 +213,7 @@ nnoremap <Space> za
 "generate ctags
 map<F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-" --- Omni complete functions --- 
+" --- Omni complete functions ---
 
 set completeopt=menuone,longest,preview
 set omnifunc=syntaxcomplete#Complete
@@ -238,42 +227,14 @@ let OmniCpp_MayCompleteScope    = 1 " autocomplete after ::
 let OmniCpp_DefaultNamespaces   = ["std", "_GLIBCXX_STD"]
 
 " automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
-"SrcExpl setting
-nnoremap  <leader>se :SrcExplToggle<CR>
-let g:SrcExpl_winHeight      = 8
-let g:SrcExpl_refreshTime    = 100
-let g:SrcExpl_jumpKey        = "<ENTER>"
-let g:SrcExpl_gobackKey      = "<SPACE>"
-let g:SrcExpl_searchLocalDef = 1
-" // Do not let the Source Explorer update the tags file when opening 
-let g:SrcExpl_isUpdateTags   = 0
-
-" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to 
-" //  create/update a tags file 
-let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ." 
-
-" // Set "<F12>" key for updating the tags file artificially 
-let g:SrcExpl_updateTagsKey = "<F12>"  
-
-let g:SrcExpl_pluginList = [
-      \ "__TagBar__",
-	  \ "BufExplorer",
-	  \ "_NERD_tree_",
-      \ "Source_Explorer"
-      \ ]
-let g:SrcExpl_isUpdateTags = 0
-"make srcexpl for multi-definition more convenient
-let g:SrcExpl_prevDefKey   = "<F6>"
-let g:SrcExpl_nextDefKey   = "<F7>"
 """""""""""""""""""""
 " ~File Processing~ "
 """""""""""""""""""""
 
 "sth related to tab and indent
 set autoindent
-set noexpandtab
+set noexpandtab 	"for tab show
 set smarttab
 set tabstop=4
 set shiftwidth=4
@@ -281,9 +242,6 @@ set shiftwidth=4
 au Filetype cpp,c set cindent
 au Filetype cpp,c setl tags+=~/.vim/tags/cpptags
 
-"Show the standard line
-nn <silent> <A-a> :call ReferenceLine('sub')<CR>
-nn <silent> <A-d> :call ReferenceLine('add')<CR>
 
 "increase and decrease number under the cursor
 nnoremap + <C-a>
@@ -298,11 +256,13 @@ inoremap <silent> <C-z> <Esc>ui
 inoremap <silent> <C-r> <Esc><C-r>i
 nnoremap <silent> <C-z> u
 
-" Persistent undo
+" Persistent undo and undotree
 if has("persistent_undo")
   set undodir=$HOME/.vim/.undodir
   set undofile
 endif
+noremap <silent><F3> <ESC>:UndotreeToggle<CR>
+
 "Case turning
 inoremap <silent> <C-u> <Esc>gUUi
 nnoremap <silent> <C-u> gUU
@@ -313,15 +273,19 @@ vnoremap <silent> <C-l> u
 
 "Search and replace
 """ Don't change this two mapping's order(strange contradiction...OTL)
-noremap <leader>sw :%s/<C-R><C-W>//g<left><left>
+nnoremap <leader>sw :%s/<C-R><C-W>//g<left><left>
 vnoremap <leader>sw <ESC>"syiwgv:s/<C-R>s//g<left><left>
+nnoremap <leader>/ :nohl<CR>
 
 "Paste
 set pastetoggle=<F2>
+inoremap <C-v> <ESC>"+pi
+vnoremap <C-c> "+y
 
 """"""""""""
 " ~Moving~ "
 """"""""""""
+
 "Widow moving
 nnoremap <C-Down>  <C-W>j
 nnoremap <C-Left>  <C-W>h
@@ -338,17 +302,24 @@ nnoremap $ g$
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-"line moving  
-nnoremap <silent> <C-S-Up> :m .-2<CR>==
+"buffer moving
+noremap <C-PageDown> :tabn<CR>
+noremap <C-PageUp> :tabp<CR>
+noremap <C-S-PageDown> :sbnext<CR>
+noremap <C-S-PageUp> :sbprevious<CR>
+
+
+"line moving
+nnoremap <silent> <C-S-Up> mz:m .-2<CR>==`z
 inoremap <silent> <C-S-Up> <Esc>:m .-2<CR>==gi
 vnoremap <silent> <C-S-Up> :m '<-2<CR>gv=gv
-nnoremap <silent> <C-S-Down> :m .+1<CR>==
-inoremap <silent> <C-S-Down> <Esc>:m .+1<cr>==gi
-vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv 
-">:last line selection end
+nnoremap <silent> <C-S-Down> mz:m .+1<CR>==`z
+inoremap <silent> <C-S-Down> <Esc>:m .+1<CR>==gi
+vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
 
 "Smart extend %
 runtime macros/matchit.vim " include matchit plugins in vim
+set rtp+=~/.fzf "fuzzy finder
 
 """"""""""""""
 " ~QuickFix~ "
@@ -367,12 +338,6 @@ let NERDTreeIgnore +=   ['\.cbp$','\.depend$','\.layout$','\.workspace$'] "add \
 nnoremap <silent> <F5> :NERDTreeToggle<CR>
 "set current path when vim start
 autocmd VimEnter * cd %:p:h
-""""""""""""""
-" ~Gitgutter~"
-""""""""""""""
-"let g:gitgutter_enabled=1
-highlight clear SignColumn
-"let g:gitgutter_sign_modified='@'
 
 """""""""""""""""
 " ~Status Line~ "
@@ -382,10 +347,12 @@ set laststatus=2
 let g:airline_detect_whitespace          = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme                      = "molokai"
-"let g:airline_left_sep                  = "\u26a1"
-"let g:airline_right_sep                 = "⌘"
 let g:airline_left_sep                   = " "
 let g:airline_right_sep                  = " "
+
+"vim-emoji
+silent! if emoji#available()
+endif
 
 """"""""""""
 " ~Tagbar~ "
@@ -396,31 +363,11 @@ let g:tagbar_autofocus = 1
 nnoremap <silent> <F8> :TagbarToggle<CR>
 inoremap <silent> <F8> <Esc>:TagbarToggle<CR>
 
-
-""""""""""""""
-" ~Undotree~ "
-""""""""""""""
-noremap <silent><F3> <ESC>:UndotreeToggle<CR>
-
 """""""""""""
 " ~snippet~ "
 """""""""""""
 let g:snips_author = "sunprinceS (TonyHsu)"
 let g:snips_email  = "sunprince12014@gmail.com"
-
-"""""""""""
-" ~LaTeX~ "
-"""""""""""
-"->look at snippet to know the auto completion
-"Latex box
-set smartindent
-set omnifunc=syntaxcomplete#Complete "turn on omnifunc
-let g:tex_flavor                            = "latex" "Need to add this to use snippet!!!
-let g:LatexBox_quickfix                     = 2
-"prevent some error when compile synchronously
-let g:LatexBox_latexmk_async                = 1
-let g:LatexBox_latexmk_preview_continuously = 1
-"noremap <leader>lvi :!evince LaTeX_file/%:r.pdf "not easy to use OTL 
 
 """"""""""""""""""
 " ~Multi-Cursor~ "
@@ -439,9 +386,6 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
-"""""""""""""""""""
-" ~JS Formatting~ "
-"""""""""""""""""""
 
 """""""""""""
 " ~Compile~ "
@@ -466,7 +410,7 @@ execute ':copen'
 
 execute ':cclose'
 endif
-endfunction
+endfunction 
 
 fu! ReferenceLine(t)  "ref : http://zshou.is-programmer.com/posts/39381
     let ccnum = &cc
@@ -490,13 +434,3 @@ function! s:align()
         call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
     endif
 endfunction
-"""""""test  function"""""""""""""""""(from LeoMao's pika-vim)
-"function! s:VSetSearch(cmdtype)
-"	let temp = @s
-"	norm! gv"sy
-"	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
-"	let @s = temp
-"endfunction
-        
-"xnoremap  * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
-"xnoremap  # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
