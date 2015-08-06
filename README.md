@@ -76,6 +76,7 @@ Plugin:
 	+ append comment `\cA`
 * Tabularize
 	+ `\t` `\tr`
+
 Programming Language:
 -------
 + SingleCompile `<F9>`

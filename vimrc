@@ -66,7 +66,6 @@ Bundle 'vim-scripts/mru.vim'
 
 "pretty status
 Bundle 'bling/vim-airline'
-Bundle 'junegunn/vim-emoji'
 
 "Powerful git wrapper
 Bundle 'tpope/vim-fugitive'
@@ -341,14 +340,15 @@ autocmd VimEnter * cd %:p:h
 """""""""""""""""
 "Airline
 set laststatus=2
+let g:airline_powerline_fonts            = 1
 let g:airline_detect_whitespace          = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_c ='%#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#%{airline#util#wrap(airline#parts#filetype(),0)}%{airline#util#append(airline#extensions#tagbar#currenttag(),0)}'
 let g:airline_section_x=''
 if has("gui_running")
-	let g:airline_section_y ='%{strftime("%H:%M:%S %a %Y-%m-%d")}'
+	let g:airline_section_y = '%{strftime("%H:%M %a %Y-%m-%d")}'
 else
-	let g:airline_section_y=''
+	let g:airline_section_y = ''
 end
 
 """"""""""""
@@ -396,45 +396,39 @@ noremap <leader>v :SCViewResult<CR>
 """"""""""""""""""""
 " ~TMUX switching~ "
 """"""""""""""""""""
-if &term =~ '^screen' && exists('$TMUX')
-    set ttymouse=xterm2
-    " tmux will send xterm-style keys when xterm-keys is on
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
-    execute "set <xHome>=\e[1;*H"
-    execute "set <xEnd>=\e[1;*F"
-    execute "set <Insert>=\e[2;*~"
-    execute "set <Delete>=\e[3;*~"
-    execute "set <PageUp>=\e[5;*~"
-    execute "set <PageDown>=\e[6;*~"
-    execute "set <xF1>=\e[1;*P"
-    execute "set <xF2>=\e[1;*Q"
-    execute "set <xF3>=\e[1;*R"
-    execute "set <xF4>=\e[1;*S"
-    execute "set <F5>=\e[15;*~"
-    execute "set <F6>=\e[17;*~"
-    execute "set <F7>=\e[18;*~"
-    execute "set <F8>=\e[19;*~"
-    execute "set <F9>=\e[20;*~"
-    execute "set <F10>=\e[21;*~"
-    execute "set <F11>=\e[23;*~"
-    execute "set <F12>=\e[24;*~"
-endif
-"let g:tmux_navigator_no_mappings = 1
-"if &term =~ '^screen'
-    "" tmux will send xterm-style keys when xterm-keys is on
-    "execute "set <Up>=\e[1;*A"
-    "execute "set <Down>=\e[1;*B"
-    "execute "set <Right>=\e[1;*C"
-    "execute "set <Left>=\e[1;*D"
-"endif
-"nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
-"nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
-"nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
-"nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-Left> :TmuxNavigateLeft<CR>
+nnoremap <silent> <C-Down> :TmuxNavigateDown<CR>
+nnoremap <silent> <C-Up> :TmuxNavigateUp<CR>
+nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
 "nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+
+if &term =~ '^screen' && exists('$TMUX')
+	set ttymouse=xterm2
+	" tmux will send xterm-style keys when xterm-keys is on
+	execute "set <xUp>=\e[1;*A"
+	execute "set <xDown>=\e[1;*B"
+	execute "set <xRight>=\e[1;*C"
+	execute "set <xLeft>=\e[1;*D"
+	execute "set <xHome>=\e[1;*H"
+	execute "set <xEnd>=\e[1;*F"
+	execute "set <Insert>=\e[2;*~"
+	execute "set <Delete>=\e[3;*~"
+	execute "set <PageUp>=\e[5;*~"
+	execute "set <PageDown>=\e[6;*~"
+	execute "set <xF1>=\e[1;*P"
+	execute "set <xF2>=\e[1;*Q"
+	execute "set <xF3>=\e[1;*R"
+	execute "set <xF4>=\e[1;*S"
+	execute "set <F5>=\e[15;*~"
+	execute "set <F6>=\e[17;*~"
+	execute "set <F7>=\e[18;*~"
+	execute "set <F8>=\e[19;*~"
+	execute "set <F9>=\e[20;*~"
+	execute "set <F10>=\e[21;*~"
+	execute "set <F11>=\e[23;*~"
+	execute "set <F12>=\e[24;*~"
+endif
 
 """""""""""""""""""""""
 " ~Related Functions~ "
