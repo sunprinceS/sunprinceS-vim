@@ -116,6 +116,9 @@ Bundle 'othree/html5.vim'
 "Alignment
 Bundle 'godlygeek/tabular'
 
+"Tmux-vim seamless switch
+Bundle 'christoomey/vim-tmux-navigator'
+
 """""""""""""
 " ~General~ "
 """""""""""""
@@ -196,7 +199,7 @@ colorscheme sun
 set t_Co=256
 
 if has("gui_running")
-	set guifont=monaco\ 16
+	set guifont=Monaco\ for\ Powerline\ 16
 end
 
 
@@ -286,13 +289,6 @@ vnoremap <C-c> "+y
 " ~Moving~ "
 """"""""""""
 
-"Widow moving
-nnoremap <C-Down>  <C-W>j
-nnoremap <C-Left>  <C-W>h
-nnoremap <C-Right> <C-W>l
-nnoremap <C-Up>    <C-W>k
-
-
 "treat long lines as break lines
 nnoremap <Down> gj
 nnoremap <Up> gk
@@ -305,6 +301,7 @@ inoremap <Up> <C-o>gk
 "buffer moving
 noremap <C-PageDown> :tabn<CR>
 noremap <C-PageUp> :tabp<CR>
+noremap <leader>n :tabnew<CR>
 noremap <C-S-PageDown> :sbnext<CR>
 noremap <C-S-PageUp> :sbprevious<CR>
 
@@ -346,13 +343,13 @@ autocmd VimEnter * cd %:p:h
 set laststatus=2
 let g:airline_detect_whitespace          = 0
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme                      = "molokai"
-let g:airline_left_sep                   = " "
-let g:airline_right_sep                  = " "
-
-"vim-emoji
-silent! if emoji#available()
-endif
+let g:airline_section_c ='%#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#%{airline#util#wrap(airline#parts#filetype(),0)}%{airline#util#append(airline#extensions#tagbar#currenttag(),0)}'
+let g:airline_section_x=''
+if has("gui_running")
+	let g:airline_section_y ='%{strftime("%H:%M:%S %a %Y-%m-%d")}'
+else
+	let g:airline_section_y=''
+end
 
 """"""""""""
 " ~Tagbar~ "
@@ -395,6 +392,49 @@ noremap <F10> :SCCompileRun<CR>
 
 "View the result of the last run command.
 noremap <leader>v :SCViewResult<CR>
+
+""""""""""""""""""""
+" ~TMUX switching~ "
+""""""""""""""""""""
+if &term =~ '^screen' && exists('$TMUX')
+    set ttymouse=xterm2
+    " tmux will send xterm-style keys when xterm-keys is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+    execute "set <xHome>=\e[1;*H"
+    execute "set <xEnd>=\e[1;*F"
+    execute "set <Insert>=\e[2;*~"
+    execute "set <Delete>=\e[3;*~"
+    execute "set <PageUp>=\e[5;*~"
+    execute "set <PageDown>=\e[6;*~"
+    execute "set <xF1>=\e[1;*P"
+    execute "set <xF2>=\e[1;*Q"
+    execute "set <xF3>=\e[1;*R"
+    execute "set <xF4>=\e[1;*S"
+    execute "set <F5>=\e[15;*~"
+    execute "set <F6>=\e[17;*~"
+    execute "set <F7>=\e[18;*~"
+    execute "set <F8>=\e[19;*~"
+    execute "set <F9>=\e[20;*~"
+    execute "set <F10>=\e[21;*~"
+    execute "set <F11>=\e[23;*~"
+    execute "set <F12>=\e[24;*~"
+endif
+"let g:tmux_navigator_no_mappings = 1
+"if &term =~ '^screen'
+    "" tmux will send xterm-style keys when xterm-keys is on
+    "execute "set <Up>=\e[1;*A"
+    "execute "set <Down>=\e[1;*B"
+    "execute "set <Right>=\e[1;*C"
+    "execute "set <Left>=\e[1;*D"
+"endif
+"nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
+"nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
+"nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
+"nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
+"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 """""""""""""""""""""""
 " ~Related Functions~ "
