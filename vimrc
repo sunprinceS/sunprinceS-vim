@@ -109,13 +109,15 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 "sth related to tab and indent
 set autoindent
-set noexpandtab 	"for tab show
+set noexpandtab
 set smarttab
 set tabstop=4
 set shiftwidth=4
 
 " Set backspace config
 set backspace=eol,start,indent "more useful <BS>
+
+"arrow moving
 set whichwrap+=<,>,[,]
 
 """""""""""""""""""""""
