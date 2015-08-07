@@ -2,12 +2,14 @@ sunprinceS-vim
 ========
 Author : TonyHsu
 
-Version: 1.3.1
+Version: 1.6.2
 
 vim configuration:
 Use [Vundle](https://github.com/gmarik/Vundle.vim)
 
 To use this configuration:
+
+![Alt text](http://i.imgur.com/VGNImAE.png)
 
 Dependencies:
 
@@ -36,6 +38,7 @@ Included Plugins:
 * [html5.vim](https://github.com/othree/html5.vim)
 * [Tabular](https://github.com/godlygeek/tabular)
 * [FZF](https://github.com/junegunn/fzf)
+
 Common Shortcut:
 =======
 

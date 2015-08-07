@@ -15,12 +15,12 @@ ln -s $HOME/sunprinceS-vim/ftplugin .
 ln -s $HOME/sunprinceS-vim/setting .
 ln -s $HOME/sunprinceS-vim/tags .
 
+echo "Setting vimrc..."
+ln -s $HOME/sunprinceS-vim/vimrc $HOME/.vimrc
+
 echo "Installing Powerline fonts..."
-sh ./install_font.sh
+cd $HOME/sunprinceS-vim
+./install_font.sh
 
 echo "Finish !"
-
-echo "By the way, in my vimrc , I love Monaco so much,so..."
-echo "powerline-fonts for Monaco(https://github.com/supermarin/powerline-fonts/blob/bfcb152306902c09b62be6e4a5eec7763e46d62d/Monaco/Monaco%20for%20Powerline.otf)"
-echo "Enjoy it : )"
 
