@@ -1,4 +1,23 @@
-" --- Omni complete functions ---
+"  Plugins:
+"	->OmniComplete
+"	->Undotree
+"	->NERDTree
+"	->Status line
+"	->Tagbar
+"	->snippet
+"	->MultipleCursor
+"	->Emmet
+"	->Compile
+"	->TMUX switching
+"	->Tabularize
+"	->matchit
+"	->fuzzy finder
+
+"-----------------------"
+
+"""""""""""""""""""
+" ~Omni complete~ "
+"""""""""""""""""""
 set completeopt=menuone,longest,preview
 set omnifunc=syntaxcomplete#Complete
 let OmniCpp_NamespaceSearch     = 1
@@ -9,7 +28,11 @@ let OmniCpp_MayCompleteDot      = 1 " autocomplete after .
 let OmniCpp_MayCompleteArrow    = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope    = 1 " autocomplete after ::
 let OmniCpp_DefaultNamespaces   = ["std", "_GLIBCXX_STD"]
-" Persistent undo and undotree
+
+""""""""""""""
+" ~UndoTree~ "
+""""""""""""""
+" Persistent undo
 if has("persistent_undo")
   set undodir=$HOME/.vim/.undodir
   set undofile
@@ -24,6 +47,7 @@ let NERDTreeIgnore +=   ['\.cbp$','\.depend$','\.layout$','\.workspace$'] "add \
 "autocmd vimenter * NERDTree "laod NERDTree automatically at beginning
 nnoremap <silent> <F5> :NERDTreeToggle<CR>
 "set current path when vim start
+autocmd VimEnter * cd %:p:h
 
 """""""""""""""""
 " ~Status Line~ "
@@ -73,7 +97,6 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
-
 """""""""""""
 " ~Compile~ "
 """""""""""""
@@ -93,8 +116,22 @@ nnoremap <silent> <C-Up> :TmuxNavigateUp<CR>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
 "nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
+""""""""""""""""
+" ~Tabularize~ "
+""""""""""""""""
 "Powerful alignment
 noremap  <leader>t  :Tabularize /
 vnoremap <leader>t  :Tabularize /
 noremap  <leader>tr :Tabularize /\zs<left><left><left>
 vnoremap <leader>tr :Tabularize /\zs<left><left><left>
+
+"""""""""""""
+" ~Matchit~ "
+"""""""""""""
+"Smart extend %
+runtime macros/matchit.vim " include matchit plugins in vim
+
+"""""""""
+" ~FZF~ "
+"""""""""
+set rtp+=~/.fzf "fuzzy finder
