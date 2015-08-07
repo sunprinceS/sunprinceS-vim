@@ -1,3 +1,6 @@
+" Key_mapping:
+"for tmux-vim navigator
+
 if &term =~ '^screen' && exists('$TMUX')
 	set ttymouse=xterm2
 	" tmux will send xterm-style keys when xterm-keys is on

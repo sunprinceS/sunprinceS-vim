@@ -1,0 +1,2 @@
+setl omnifunc=htmlcomplete#CompleteTags
+

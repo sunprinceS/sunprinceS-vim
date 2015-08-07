@@ -36,6 +36,10 @@ vnoremap <C-c> "+y
 nnoremap + <C-a>
 nnoremap - <C-x>
 
+"Show the standard line
+nn <silent> <A-Left> :call ReferenceLine('sub')<CR>
+nn <silent> <A-Right> :call ReferenceLine('add')<CR>
+
 "delete traling space
 noremap <A-n> mmHmt:%s/\s\+$//ge<CR>'tzt'm:nohl<CR>
 set lcs=tab:\|\ ,nbsp:%,trail:-

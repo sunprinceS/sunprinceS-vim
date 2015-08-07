@@ -12,6 +12,7 @@
 "	->Tabularize
 "	->matchit
 "	->fuzzy finder
+"	->Quickfix
 
 "-----------------------"
 
@@ -20,14 +21,6 @@
 """""""""""""""""""
 set completeopt=menuone,longest,preview
 set omnifunc=syntaxcomplete#Complete
-let OmniCpp_NamespaceSearch     = 1
-let OmniCpp_GlobalScopeSearch   = 1
-let OmniCpp_ShowAccess          = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot      = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow    = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope    = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces   = ["std", "_GLIBCXX_STD"]
 
 """"""""""""""
 " ~UndoTree~ "
@@ -134,4 +127,11 @@ runtime macros/matchit.vim " include matchit plugins in vim
 """""""""
 " ~FZF~ "
 """""""""
+
+""""""""""""""
+" ~QuickFix~ "
+""""""""""""""
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+noremap <silent> <leader>qf <Esc>:call QFSwitch()<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.fzf "fuzzy finder
