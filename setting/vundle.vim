@@ -85,3 +85,6 @@ Bundle 'godlygeek/tabular'
 
 "Tmux-vim seamless switch
 Bundle 'christoomey/vim-tmux-navigator'
+
+"powerful tool in html
+Bundle 'tpope/vim-surround'

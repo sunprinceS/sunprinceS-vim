@@ -38,6 +38,7 @@ Included Plugins:
 * [html5.vim](https://github.com/othree/html5.vim)
 * [Tabular](https://github.com/godlygeek/tabular)
 * [FZF](https://github.com/junegunn/fzf)
+* [surround](https://github.com/tpope/vim-surround)
 
 Common Shortcut:
 =======
