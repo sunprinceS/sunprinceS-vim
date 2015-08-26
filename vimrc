@@ -38,6 +38,8 @@ filetype on
 filetype plugin indent on
 set autoread "autoread when files is changed from outside
 
+"Filetype redef
+autocmd BufRead,BufNewFile *.html.erb set filetype=html
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC

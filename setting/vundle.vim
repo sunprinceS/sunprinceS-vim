@@ -88,3 +88,6 @@ Bundle 'christoomey/vim-tmux-navigator'
 
 "powerful tool in html
 Bundle 'tpope/vim-surround'
+
+"Bootstrap autocomplete
+Bundle 'bonsaiben/bootstrap-snippets'
