@@ -91,3 +91,5 @@ Bundle 'tpope/vim-surround'
 
 "Bootstrap autocomplete
 Bundle 'bonsaiben/bootstrap-snippets'
+
+"Bundle 'vhda/verilog_systemverilog.vim'

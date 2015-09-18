@@ -14,6 +14,9 @@ ln -s $HOME/sunprinceS-vim/after .
 ln -s $HOME/sunprinceS-vim/ftplugin .
 ln -s $HOME/sunprinceS-vim/setting .
 ln -s $HOME/sunprinceS-vim/tags .
+ln -s $HOME/sunprinceS-vim/ftdetect .
+ln -s $HOME/sunprinceS-vim/syntax .
+ln -s $HOME/sunprinceS-vim/indent .
 
 echo "Setting vimrc..."
 ln -s $HOME/sunprinceS-vim/vimrc $HOME/.vimrc
