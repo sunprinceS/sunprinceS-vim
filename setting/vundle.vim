@@ -81,8 +81,8 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'othree/html5.vim'
 
 "Alignment
-Bundle 'godlygeek/tabular'
-
+"Bundle 'godlygeek/tabular'
+Bundle 'junegunn/vim-easy-align'
 "Tmux-vim seamless switch
 Bundle 'christoomey/vim-tmux-navigator'
 
@@ -93,3 +93,5 @@ Bundle 'tpope/vim-surround'
 Bundle 'bonsaiben/bootstrap-snippets'
 
 "Bundle 'vhda/verilog_systemverilog.vim'
+"
+Bundle 'junegunn/fzf'

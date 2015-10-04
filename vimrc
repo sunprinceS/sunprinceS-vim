@@ -38,9 +38,6 @@ filetype on
 filetype plugin indent on
 set autoread "autoread when files is changed from outside
 
-"Filetype redef
-autocmd BufRead,BufNewFile *.html.erb set filetype=html
-
 " When vimrc is edited, reload it
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 
@@ -72,7 +69,7 @@ set mouse=a 	"mouse function
 set ruler	"Always show current position
 set cursorline 	"highlight current line
 set nu	"line number
-set rnu "line number (relative number)
+"set rnu "line number (relative number)
 set showmatch  "show matching bracets
 set hlsearch "Highlight search things
 set incsearch "make search like modern browser
@@ -90,7 +87,7 @@ colorscheme sun
 set t_Co=256
 
 if has("gui_running")
-	set guifont=Monaco\ for\ Powerline\ 16
+	set guifont=Source\ Code\ Pro\ Medium\ 17
 end
 
 "Folding
