@@ -9,21 +9,21 @@ echo "Successfully Install Plugins!!!"
 
 echo "Setting some custom file..."
 cd $HOME/.vim
-ln -s $HOME/sunprinceS-vim/colors/sun.vim colors/sun.vim
-ln -s $HOME/sunprinceS-vim/after .
-ln -s $HOME/sunprinceS-vim/ftplugin .
-ln -s $HOME/sunprinceS-vim/setting .
-ln -s $HOME/sunprinceS-vim/tags .
-ln -s $HOME/sunprinceS-vim/ftdetect .
-ln -s $HOME/sunprinceS-vim/syntax .
-ln -s $HOME/sunprinceS-vim/indent .
+if [ ! -d colors ];then
+	mkdir colors
+fi
+
+ln -sf $HOME/sunprinceS-vim/colors/sun.vim colors/sun.vim
+ln -sf $HOME/sunprinceS-vim/after .
+ln -sf $HOME/sunprinceS-vim/ftplugin .
+ln -sf $HOME/sunprinceS-vim/setting .
+ln -sf $HOME/sunprinceS-vim/tags .
+ln -sf $HOME/sunprinceS-vim/ftdetect .
+ln -sf $HOME/sunprinceS-vim/syntax .
+ln -sf $HOME/sunprinceS-vim/indent .
 
 echo "Setting vimrc..."
-ln -s $HOME/sunprinceS-vim/vimrc $HOME/.vimrc
-
-echo "Installing Powerline fonts..."
-cd $HOME/sunprinceS-vim
-./install_font.sh
+ln -sf $HOME/sunprinceS-vim/vimrc $HOME/.vimrc
 
 echo "Finish !"
 

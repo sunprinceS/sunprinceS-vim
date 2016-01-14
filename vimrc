@@ -87,7 +87,7 @@ colorscheme sun
 set t_Co=256
 
 if has("gui_running")
-	set guifont=Source\ Code\ Pro\ Medium\ 17
+	set guifont=Source\ Code\ Pro\ Medium\ 16
 end
 
 "Folding

@@ -20,16 +20,16 @@ Dependencies:
 Included Plugins:
 ======
 * [NERDTree](https://github.com/scrooloose/nerdtree)
+* [tagbar](https://github.com/majutsushi/tagbar)
+* [undotree](https://github.com/mbbill/undotree)
 * [mru.vim](https://github.com/vim-scripts/mru.vim)
+* [BufExplorer](https://github.com/jlanzarotta/bufexplorer)
 * [airline](https://github.com/bling/vim-airline)
 * [vim-fugitive](https://github.com/tpope/vim-fugitive)
-* [tagbar](https://github.com/majutsushi/tagbar)
 * [snippet](https://github.com/honza/vim-snippets)
 * [snipmate](https://github.com/garbas/vim-snipmate)
 * [OmniCppComplete](https://github.com/vim-scripts/OmniCppComplete)
-* [BufExplorer](https://github.com/jlanzarotta/bufexplorer)
 * [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
-* [undotree](https://github.com/mbbill/undotree)
 * [cscope](https://github.com/vim-scripts/cscope.vim)
 * [MultiCursor](https://github.com/terryma/vim-multiple-cursors)
 * [python-syntax](https://github.com/hdima/python-syntax)
@@ -37,6 +37,7 @@ Included Plugins:
 * [vim-javascript-syntax](https://github.com/jelera/vim-javascript-syntax)
 * [html5.vim](https://github.com/othree/html5.vim)
 * [Tabular](https://github.com/godlygeek/tabular)
+* [Ag.vim](https://github.com/rking/ag.vim)
 * [FZF](https://github.com/junegunn/fzf)
 * [surround](https://github.com/tpope/vim-surround)
 
@@ -49,9 +50,7 @@ General:
 + line switching `<Ctrl-Shift-↑> <Ctrl-Shift-↓>` 
 + window moving `<Ctrl-↑>` for move up,things like that...
 + redo and undo `<Ctrl-z>` `<Ctrl-r>`
-+ upper-case 2 lower-case `<Ctrl-u>` `<Ctrl-l>`
 + useful searching `\sw`
-+ folding 
 + open/close the folding `<Space>`
 + QuickFixToggle `\qf`
 + generate ctags `<F4>`
@@ -64,6 +63,7 @@ Plugin:
 + NERDTree `<F5>`
 	+ open new horizontal split window `i`
 	+ open new vertical split window `s`
+	+ open new tab `t`
 	+ show hidden files in tree `I`
 + Tagbar `<F8>`
 + Snipmate `<Tab>` 
@@ -74,7 +74,6 @@ Plugin:
 * Emmet
     + leaderKey `<C-a>`
 + Bufexplorer `\be` `\bs` `\bv`
-+ vimwiki Honepage `\ww`
 + NerdCommenter
 	+ comment toggle `\c<space>`
 	+ append comment `\cA`
@@ -87,7 +86,3 @@ Programming Language:
 + SingleCompilenRun `<F10>`
 	->optimize <C-F9> <C-F10>
 + view last output `\v`
-
-Todo:
-+ cscope -> to make DEBUG more quiclkly
-

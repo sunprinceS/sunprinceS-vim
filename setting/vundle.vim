@@ -8,11 +8,11 @@ filetype off  "required for Vundle
 
 "Setting up Vundle
 let beHadVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+let vundle_readme=expand('$HOME/.vim/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
    echo "Installing Vundle..."
    echo ""
-   silent !mkdir -p~/.vim/bundle
+   silent !mkdir -p $HOME/.vim/bundle
    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
    let beHadVundle=0
 endif
@@ -76,22 +76,24 @@ Bundle 'mattn/emmet-vim'
 
 "js syntax
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'wavded/vim-stylus'
 
 "html5
 Bundle 'othree/html5.vim'
 
 "Alignment
-"Bundle 'godlygeek/tabular'
 Bundle 'junegunn/vim-easy-align'
+
 "Tmux-vim seamless switch
 Bundle 'christoomey/vim-tmux-navigator'
 
 "powerful tool in html
 Bundle 'tpope/vim-surround'
 
-"Bootstrap autocomplete
-Bundle 'bonsaiben/bootstrap-snippets'
-
-"Bundle 'vhda/verilog_systemverilog.vim'
-"
+"fuzzy finder and silver searcher
+Bundle 'rking/ag.vim'
 Bundle 'junegunn/fzf'
+
+"LaTeX
+Bundle 'lervag/vimtex'

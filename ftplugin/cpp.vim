@@ -1,4 +1,5 @@
 setl cindent
+setl noexpandtab
 setl tags+=~/.vim/tags/cpptags
 let OmniCpp_NamespaceSearch     = 1
 let OmniCpp_GlobalScopeSearch   = 1

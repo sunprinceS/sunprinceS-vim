@@ -127,6 +127,8 @@ runtime macros/matchit.vim " include matchit plugins in vim
 """""""""
 " ~FZF~ "
 """""""""
+set rtp+=~/.fzf "fuzzy finder
+nnoremap <leader>ff <ESC>:FZF<CR>
 
 """"""""""""""
 " ~QuickFix~ "
@@ -134,4 +136,3 @@ runtime macros/matchit.vim " include matchit plugins in vim
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 noremap <silent> <leader>qf <Esc>:call QFSwitch()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.fzf "fuzzy finder

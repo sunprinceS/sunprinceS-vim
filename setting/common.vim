@@ -13,14 +13,6 @@ inoremap <silent> <C-z> <Esc>ui
 inoremap <silent> <C-r> <Esc><C-r>i
 nnoremap <silent> <C-z> u
 
-"Case turning
-inoremap <silent> <C-u> <Esc>gUUi
-nnoremap <silent> <C-u> gUU
-vnoremap <silent> <C-u> U
-inoremap <silent> <C-l> <Esc>guui
-nnoremap <silent> <C-l> guu
-vnoremap <silent> <C-l> u
-
 "Search and replace
 """ Don't change this two mapping's order(strange contradiction...OTL)
 nnoremap <leader>sw :%s/<C-R><C-W>//g<left><left>
@@ -63,8 +55,6 @@ inoremap <Up> <C-o>gk
 noremap <C-PageDown> :tabn<CR>
 noremap <C-PageUp> :tabp<CR>
 noremap <leader>n :tabnew<CR>
-noremap <C-S-PageDown> :sbnext<CR>
-noremap <C-S-PageUp> :sbprevious<CR>
 
 "line moving
 nnoremap <silent> <C-S-Up> mz:m .-2<CR>==`z
